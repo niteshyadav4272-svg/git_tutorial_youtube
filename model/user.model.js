@@ -35,16 +35,16 @@ const userSchema = new Schema(
 
 
 
-// userSchema.pre("save", async function () {
+userSchema.pre("save", async function () {
   
-//   const count = await this.constructor.countDocuments({
-//     email: this.email,
-//   });
+  const count = await this.constructor.countDocuments({
+    email: this.email,
+  });
 
-//   if (count > 0) {
-//     throw new Error("email already exists");
-//   }
-// });
+  if (count > 0) {
+    throw new Error("email already exists");
+  }
+});
 
 
 userSchema.pre("save", async function () {
